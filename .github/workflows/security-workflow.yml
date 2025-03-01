@@ -11,7 +11,7 @@ on:
       hadolint_enabled:
         description: 'Whether hadolint is enabled'
         required: false
-        type: bool
+        type: boolean
         default: true
 
 jobs:

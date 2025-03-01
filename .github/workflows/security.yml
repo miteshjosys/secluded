@@ -1,0 +1,27 @@
+name: Security Workflow
+
+on:
+  workflow_call:
+    inputs:
+      message:
+        description: 'A message to greet the user'
+        required: true
+        type: string
+        default: 'Hello, World!'
+
+jobs:
+  greet:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Greet User
+      run: |
+        echo ${{ inputs.message }}
+        ls -lR .github
+
+    - uses: hadolint/hadolint-action@v3.1.0
+      with:
+        dockerfile: Dockerfile

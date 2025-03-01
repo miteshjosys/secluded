@@ -8,6 +8,11 @@ on:
         required: true
         type: string
         default: 'Hello, World!'
+      hadolint_enabled:
+        description: 'Whether hadolint is enabled'
+        required: false
+        type: bool
+        default: true
 
 jobs:
   security-workflow:

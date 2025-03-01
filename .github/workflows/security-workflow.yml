@@ -23,5 +23,6 @@ jobs:
         ls -lR .github Dockerfile
 
     - uses: hadolint/hadolint-action@v3.1.0
+      if: ${{ inputs.hadolint_enabled }}
       with:
         dockerfile: Dockerfile

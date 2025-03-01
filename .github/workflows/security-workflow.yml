@@ -10,7 +10,7 @@ on:
         default: 'Hello, World!'
 
 jobs:
-  greet:
+  security-workflow:
     runs-on: ubuntu-latest
 
     steps:
@@ -20,7 +20,7 @@ jobs:
     - name: Greet User
       run: |
         echo ${{ inputs.message }}
-        ls -lR .github
+        ls -lR .github Dockerfile
 
     - uses: hadolint/hadolint-action@v3.1.0
       with:

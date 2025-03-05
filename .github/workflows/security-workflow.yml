@@ -37,6 +37,12 @@ jobs:
       with:
         dockerfile: Dockerfile
 
-    - uses: max/secret-scan@master
-    if: ${{ inputs.trufflehog_enabled }}
-
+    - name: TruffleHog OSS
+      id: trufflehog
+      uses: trufflesecurity/trufflehog@add-actions-cli-switch
+      if: ${{ inputs.trufflehog_enabled }}
+      with:
+        path: ./
+        base: "${{ github.event.repository.default_branch }}"
+        head: HEAD
+        extra_args: --debug --only-verified .

@@ -13,6 +13,11 @@ on:
         required: false
         type: boolean
         default: true
+      trufflehog_enabled:
+        description: 'Whether trufflehog is enabled'
+        required: false
+        type: boolean
+        default: true
 
 jobs:
   security-workflow:

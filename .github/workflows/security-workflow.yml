@@ -32,17 +32,21 @@ jobs:
         echo ${{ inputs.message }}
         ls -lR .github Dockerfile
 
-    - uses: hadolint/hadolint-action@v3.1.0
+    - name: Hadolint Dockerfile Linting 
+      uses: hadolint/hadolint-action@v3.1.0
       if: ${{ inputs.hadolint_enabled }}
       with:
         dockerfile: Dockerfile
 
-    - name: TruffleHog OSS
-      id: trufflehog
-      uses: trufflesecurity/trufflehog@main
+    # - name: TruffleHog OSS
+    #   id: trufflehog
+    #   uses: trufflesecurity/trufflehog@main
+    #   if: ${{ inputs.trufflehog_enabled }}
+    #   with:
+    #     path: ./
+    #     base: "${{ github.event.repository.default_branch }}"
+    #     head: HEAD
+    #     extra_args: --debug --results=verified,unknown
+    - name: Secret Scanner
+      uses: secret-scanner/action@0.0.2
       if: ${{ inputs.trufflehog_enabled }}
-      with:
-        path: ./
-        base: "${{ github.event.repository.default_branch }}"
-        head: HEAD
-        extra_args: --debug --results=verified,unknown
